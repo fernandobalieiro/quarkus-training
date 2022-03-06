@@ -5,16 +5,16 @@ import com.training.quarkus.repository.CallerRepository;
 
 public class CallerService {
 
-    private static CallerService instance = null;
+    private static final CallerService instance = new CallerService();
+
+    private CallerService() {
+    }
 
     public Caller getCallerByPhone(final String phone) {
         return CallerRepository.getInstance().getCallerByPhone(phone);
     }
 
     public static CallerService getInstance() {
-        if (instance == null) {
-            instance = new CallerService();
-        }
         return instance;
     }
 }

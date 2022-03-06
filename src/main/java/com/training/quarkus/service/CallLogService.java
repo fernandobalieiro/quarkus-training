@@ -6,7 +6,10 @@ import com.training.quarkus.repository.CallLogRepository;
 
 public class CallLogService {
 
-    private static CallLogService instance = null;
+    private static final CallLogService instance = new CallLogService();
+
+    private CallLogService() {
+    }
 
     public CallLog getCallLogByPhone(final String phone) {
         return CallLogRepository.getInstance().getCallLogByPhone(phone);
@@ -23,9 +26,6 @@ public class CallLogService {
     }
 
     public static CallLogService getInstance() {
-        if (instance == null) {
-            instance = new CallLogService();
-        }
         return instance;
     }
 }
