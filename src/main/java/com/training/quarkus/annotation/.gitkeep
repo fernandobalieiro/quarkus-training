@@ -1,0 +1,3 @@
+# Your annotation should be created here.
+
+# The fields of your annotation should be annotated with @Nonbinding, otherwise the interceptor won't work.
