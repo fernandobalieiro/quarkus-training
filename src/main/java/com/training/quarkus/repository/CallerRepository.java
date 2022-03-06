@@ -9,11 +9,11 @@ import java.util.stream.IntStream;
 
 public class CallerRepository {
 
-    private static CallerRepository instance = null;
+    private static final CallerRepository instance = new CallerRepository();
 
-    private Map<String, Caller> callers = new HashMap<>();
+    private final Map<String, Caller> callers = new HashMap<>();
 
-    public CallerRepository() {
+    private CallerRepository() {
         createCallers();
     }
 
@@ -35,9 +35,6 @@ public class CallerRepository {
     }
 
     public static CallerRepository getInstance() {
-        if (instance == null) {
-            instance = new CallerRepository();
-        }
         return instance;
     }
 }
