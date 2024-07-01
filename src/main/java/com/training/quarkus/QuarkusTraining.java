@@ -8,8 +8,7 @@ import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import java.util.Scanner;
 
 
@@ -20,12 +19,13 @@ public class QuarkusTraining {
         Quarkus.run(QuarkusApp.class, args);
     }
 
-    @ApplicationScoped
     public static class QuarkusApp implements QuarkusApplication {
 
         private CallLogService callLogService;
         private CallerService callerService;
 
+        // Optional: Constructor Injection
+        // Practical example of IoC (Inversion of Control) using Dependency Injection (DI)
         @Inject
         public QuarkusApp(final CallLogService callLogService, final CallerService callerService) {
             this.callLogService = callLogService;
