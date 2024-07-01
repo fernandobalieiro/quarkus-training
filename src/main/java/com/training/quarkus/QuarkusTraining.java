@@ -8,11 +8,11 @@ import com.training.quarkus.service.CallerService;
 import java.util.Scanner;
 
 public class QuarkusTraining {
+    //FIXME
+    private static final CallerService callerService = //???
+    private static final CallLogService callLogService = //???
 
     public static void main(String[] args) {
-        //FIXME
-        CallerService callerService = //???
-        CallLogService callLogService = //???
 
         // A valid phone number to try out: +35199999991
 
@@ -22,12 +22,12 @@ public class QuarkusTraining {
             System.out.print("Enter phone Number: ");
             String phone = in.nextLine();
 
-            if (phone == null || phone.length() == 0) {
+            if (phone == null || phone.isEmpty()) {
                 System.out.println("Phone number cannot be blank.\n");
                 continue;
             }
 
-            // TODO Invoke CallerService and CallLogService methods classes here
+            // TODO Invoke public methods from CallerService and CallLogService here.
             Caller caller = //???
             CallLog callLog = //???
 

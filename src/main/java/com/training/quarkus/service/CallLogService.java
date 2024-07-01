@@ -5,12 +5,13 @@ import com.training.quarkus.model.Caller;
 
 public class CallLogService {
 
-    public static CallLogService instance = null;
+    private static CallLogService instance = null;
 
-    // FIXME Missing field.
+    private CallLogService() {
+    }
 
     public CallLog getCallLogByPhone(final String phone) {
-        // FIXME Invoke repository method here.
+        // FIXME Invoke CallLogRepository method here.
         return ;
     }
 
@@ -24,5 +25,5 @@ public class CallLogService {
         }
     }
 
-    // TODO Implement missing getInstance Method
+    // TODO Implement missing getInstance method. Check CallerRepository for reference.
 }

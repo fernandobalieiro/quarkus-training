@@ -6,12 +6,13 @@ public class CallerService {
 
     private static CallerService instance = null;
 
-    // FIXME Missing dependency.
+    private CallerService() {
+    }
 
     public Caller getCallerByPhone(final String phone) {
-        // FIXME Invoke repository method here.
+        // FIXME Invoke CallerRepository method here.
         return ;
     }
 
-    // TODO Implement missing getInstance Method
+    // TODO Implement missing getInstance method. Check CallerRepository for reference.
 }

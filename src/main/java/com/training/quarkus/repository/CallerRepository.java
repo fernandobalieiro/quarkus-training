@@ -13,7 +13,7 @@ public class CallerRepository {
 
     private Map<String, Caller> callers = new HashMap<>();
 
-    public CallerRepository() {
+    private CallerRepository() {
         createCallers();
     }
 
@@ -34,7 +34,7 @@ public class CallerRepository {
         );
     }
 
-    public CallerRepository getInstance() {
+    public static CallerRepository getInstance() {
         if (instance == null) {
             instance = new CallerRepository();
         }
