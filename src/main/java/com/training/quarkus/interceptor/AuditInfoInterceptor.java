@@ -2,11 +2,14 @@ package com.training.quarkus.interceptor;
 
 import com.training.quarkus.annotation.AuditInfo;
 
-import javax.annotation.Priority;
-import javax.interceptor.AroundInvoke;
-import javax.interceptor.Interceptor;
-import javax.interceptor.InvocationContext;
+import jakarta.annotation.Priority;
+import jakarta.interceptor.AroundInvoke;
+import jakarta.interceptor.Interceptor;
+import jakarta.interceptor.InvocationContext;
+import org.apache.commons.lang3.time.StopWatch;
+
 import java.text.MessageFormat;
+import java.util.Arrays;
 
 @AuditInfo
 @Interceptor
@@ -15,21 +18,27 @@ class AuditInfoInterceptor {
 
     @AroundInvoke
     public Object logAuditInfo(final InvocationContext context) throws Exception {
-        long startTime = System.currentTimeMillis();
-        try {
-            return context.proceed();
-        } finally {
-            log(context, startTime);
-        }
+        final var stopWatch = new StopWatch();
+        stopWatch.start();
+
+        final var result = context.proceed();
+
+        stopWatch.stop();
+
+        log(context, stopWatch);
+
+        return result;
     }
 
-    private void log(final InvocationContext context, final long startTime) {
-        final var auditInfo = context.getMethod().getDeclaredAnnotation(AuditInfo.class);
+    private void log(final InvocationContext context, final StopWatch stopWatch) {
+        final var auditInfo = context.getInterceptorBindings(AuditInfo.class).iterator().next();
 
-        long totalTime = System.currentTimeMillis() - startTime;
-        String className = context.getMethod().getDeclaringClass().getName();
-        String method = context.getMethod().getName();
-        System.out.println(MessageFormat.format(">> Method [{0}{1}] annotated with ResourceId=[{2}] and OperationId=[{3}] finished in [{4}] milliseconds.",
-                className, method, auditInfo.resourceId(), auditInfo.operation(), totalTime));
+        final var className = context.getMethod().getDeclaringClass().getName();
+        final var method = context.getMethod().getName();
+        final var phoneNumber = Arrays.stream(context.getParameters()).iterator().next();
+
+        System.out.println(MessageFormat.format(">> Method [{0}{1}] annotated with OperationId=[{2}] and ResourceId=[{3}] " +
+                        "invoked with [{4}] was finished in [{5}] nanoseconds.",
+                className, method, auditInfo.operation(), auditInfo.resourceId(), phoneNumber, stopWatch.getNanoTime()));
     }
 }

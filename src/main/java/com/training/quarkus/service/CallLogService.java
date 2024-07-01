@@ -5,7 +5,7 @@ import com.training.quarkus.model.CallLog;
 import com.training.quarkus.model.Caller;
 import com.training.quarkus.repository.CallLogRepository;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class CallLogService {
