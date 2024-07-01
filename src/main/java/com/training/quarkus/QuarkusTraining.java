@@ -8,8 +8,6 @@ import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import java.util.Scanner;
 
 
@@ -41,7 +39,7 @@ public class QuarkusTraining {
                 System.out.print("Enter phone Number: ");
                 String phone = in.nextLine();
 
-                if (phone == null || phone.length() == 0) {
+                if (phone == null || phone.isEmpty()) {
                     System.out.println("Phone number cannot be blank.\n");
                     continue;
                 }
