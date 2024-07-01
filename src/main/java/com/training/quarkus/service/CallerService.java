@@ -6,7 +6,8 @@ public class CallerService {
 
     private static CallerService instance = null;
 
-    // FIXME Missing dependency.
+    private CallerService() {
+    }
 
     public Caller getCallerByPhone(final String phone) {
         // FIXME Invoke repository method here.

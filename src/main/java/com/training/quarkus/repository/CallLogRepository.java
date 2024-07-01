@@ -10,11 +10,12 @@ import java.util.stream.IntStream;
 
 public class CallLogRepository {
 
+    // FIXME: Missing something here...
     private CallLogRepository instance = null;
 
     private Map<String, CallLog> callLogs = new HashMap<>();
 
-    public CallLogRepository() {
+    private CallLogRepository() {
         createCallLogs();
     }
 
@@ -38,7 +39,7 @@ public class CallLogRepository {
         );
     }
 
-    public CallLogRepository getInstance() {
+    public static CallLogRepository getInstance() {
         if (instance == null) {
             instance = new CallLogRepository();
         }
