@@ -4,7 +4,7 @@ import com.training.quarkus.annotation.AuditInfo;
 import com.training.quarkus.model.Caller;
 import com.training.quarkus.repository.CallerRepository;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class CallerService {
