@@ -1,6 +1,7 @@
 package com.training.quarkus.repository;
 
 import com.training.quarkus.model.CallLog;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -8,7 +9,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-// FIXME
+@ApplicationScoped
 public class CallLogRepository {
 
     private Map<String, CallLog> callLogs = new HashMap<>();
