@@ -8,6 +8,9 @@ public class CallLogService {
 
     private static CallLogService instance = null;
 
+    private CallLogService() {
+    }
+
     public CallLog getCallLogByPhone(final String phone) {
         return CallLogRepository.getInstance().getCallLogByPhone(phone);
     }
@@ -22,7 +25,7 @@ public class CallLogService {
         }
     }
 
-    public static CallLogService getInstance() {
+    public static synchronized CallLogService getInstance() {
         if (instance == null) {
             instance = new CallLogService();
         }

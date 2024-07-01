@@ -14,7 +14,7 @@ public class CallLogRepository {
 
     private Map<String, CallLog> callLogs = new HashMap<>();
 
-    public CallLogRepository() {
+    private CallLogRepository() {
         createCallLogs();
     }
 
@@ -38,7 +38,7 @@ public class CallLogRepository {
         );
     }
 
-    public static CallLogRepository getInstance() {
+    public static synchronized CallLogRepository getInstance() {
         if (instance == null) {
             instance = new CallLogRepository();
         }
