@@ -11,9 +11,9 @@ public class CallerRepository {
 
     private static CallerRepository instance = null;
 
-    private Map<String, Caller> callers = new HashMap<>();
+    private final Map<String, Caller> callers = new HashMap<>();
 
-    public CallerRepository() {
+    private CallerRepository() {
         createCallers();
     }
 
@@ -34,7 +34,7 @@ public class CallerRepository {
         );
     }
 
-    public static CallerRepository getInstance() {
+    public static synchronized CallerRepository getInstance() {
         if (instance == null) {
             instance = new CallerRepository();
         }

@@ -9,9 +9,10 @@ import java.util.Scanner;
 
 public class QuarkusTraining {
 
+    private static final CallerService callerService = CallerService.getInstance();
+    private static final CallLogService callLogService = CallLogService.getInstance();
+
     public static void main(String[] args) {
-        CallerService callerService = CallerService.getInstance();
-        CallLogService callLogService = CallLogService.getInstance();
 
         // A valid phone number to try out: +35199999991
 
@@ -21,7 +22,7 @@ public class QuarkusTraining {
             System.out.print("Enter phone Number: ");
             String phone = in.nextLine();
 
-            if (phone == null || phone.length() == 0) {
+            if (phone == null || phone.isEmpty()) {
                 System.out.println("Phone number cannot be blank.\n");
                 continue;
             }
