@@ -2,7 +2,7 @@ package com.training.quarkus.repository;
 
 import com.training.quarkus.model.CallLog;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
 @ApplicationScoped
 public class CallLogRepository {
 
-    private Map<String, CallLog> callLogs = new HashMap<>();
+    private final Map<String, CallLog> callLogs = new HashMap<>();
 
     public CallLogRepository() {
         createCallLogs();

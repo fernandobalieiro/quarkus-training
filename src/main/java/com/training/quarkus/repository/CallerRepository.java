@@ -2,7 +2,7 @@ package com.training.quarkus.repository;
 
 import com.training.quarkus.model.Caller;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;

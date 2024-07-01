@@ -3,12 +3,12 @@ package com.training.quarkus.service;
 import com.training.quarkus.model.Caller;
 import com.training.quarkus.repository.CallerRepository;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class CallerService {
 
-    private CallerRepository callerRepository;
+    private final CallerRepository callerRepository;
 
     public CallerService(CallerRepository callerRepository) {
         this.callerRepository = callerRepository;
